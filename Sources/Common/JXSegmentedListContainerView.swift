@@ -201,6 +201,9 @@ open class JXSegmentedListContainerView: UIView, JXSegmentedViewListContainer, J
                 collectionView.frame = bounds
                 collectionView.collectionViewLayout.invalidateLayout()
                 collectionView.setContentOffset(CGPoint(x: CGFloat(currentIndex)*collectionView.bounds.size.width, y: 0), animated: false)
+                if let currentList = dataSource?.listContainerView(self, initListAt: currentIndex) {
+                    currentList.listView().frame = bounds
+                }
             }else {
                 collectionView.frame = bounds
             }
